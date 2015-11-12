@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NFL Player Tracker</title>
+</head>
+<body>
+{{^username}}
+<form action="login" method="post">
+    <input type="text" placeholder="Username" name="username"/>
+    <input type="password" placeholder="Password" name="password"/>
+    <button type="submit">Login / Create Account</button>
+</form>
+{{/username}}
+
+{{#username}}
+Welcome, {{username}}!
+<form action="logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+
+{{/username}}
+
+
+
+
+</body>
+</html>
