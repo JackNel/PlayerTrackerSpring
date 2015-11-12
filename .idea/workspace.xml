@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33fff1e2-1b9a-45e4-9deb-e523379336f8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/theironyard/PasswordHash.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/theironyard/PlayerTrackerSpringController.java" afterPath="$PROJECT_DIR$/src/main/java/com/theironyard/PlayerTrackerSpringController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/theironyard/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/theironyard/UserRepository.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -1034,7 +1030,37 @@
       <option name="project" value="LOCAL" />
       <updated>1447366651440</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add login/logout with secure password">
+      <created>1447366682879</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1447366682879</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add login/logout with secure password">
+      <created>1447366692864</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1447366692864</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add login/logout with secure password">
+      <created>1447366702249</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1447366702249</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add login/logout with secure password">
+      <created>1447366708617</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1447366708617</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add login/logout with secure password">
+      <created>1447366717293</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1447366717293</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
