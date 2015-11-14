@@ -51,4 +51,28 @@ public class PlayerTrackerSpringController {
         session.invalidate();
         return "redirect:/";
     }
+
+    @RequestMapping("/create")
+    public String create(HttpSession session, String name, String team, String position, Integer age) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in");
+        }
+        User user = users.findOneByUsername(username);
+        Player player = new Player();
+        player.name = name;
+        player.team = team;
+        player.position = position;
+        player.age = age;
+        player.user = user;
+        players.save(player);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/edit")
+    public String edit(Model model, Integer id) {
+        Player player = players.findOne(id);
+        model.addAttribute("player", player);
+        return "edit";
+    }
 }
