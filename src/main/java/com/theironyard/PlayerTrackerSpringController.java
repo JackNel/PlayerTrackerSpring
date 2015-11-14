@@ -70,9 +70,28 @@ public class PlayerTrackerSpringController {
     }
 
     @RequestMapping("/edit")
-    public String edit(Model model, Integer id) {
+    public String edit(HttpSession session, Model model, Integer id) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in");
+        }
         Player player = players.findOne(id);
         model.addAttribute("player", player);
         return "edit";
+    }
+
+    @RequestMapping("/edit-player")
+    public String editPlayer(HttpSession session, Integer id, String name, String team, String position, Integer age) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in");
+        }
+        Player player = players.findOne(id);
+        player.name = name;
+        player.team = team;
+        player.position = position;
+        player.age = age;
+        players.save(player);
+        return "redirect:/";
     }
 }

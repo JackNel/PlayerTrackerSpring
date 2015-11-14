@@ -6,10 +6,13 @@
 </head>
 <body>
 <b>The NFL Player Tracker Edit Entry Page</b><br><br>
+{{#player}}
 <form action="edit-player" method="post">
-    <input type="text" placeholder="Player Name" name="name" size="40"/>
-    <input type="number" placeholder="Age" name="age"/>
+    <input type="hidden" value="{{id}}" name="id"/>
+    <input type="text" value="{{name}}" name="name" size="40"/>
+    <input type="number" value="{{age}}" name="age"/>
     <select name="team">
+        <option selected disabled>Select Team</option>
         <option value="49ers">49ers</option>
         <option value="Bears">Bears</option>
         <option value="Bengals">Bengals</option>
@@ -46,6 +49,7 @@
         <option value="Retired">Retired</option>
     </select>
     <select name="position">
+        <option selected disabled>Select Position</option>
         <option value="QB">QB</option>
         <option value="HB">HB</option>
         <option value="FB">FB</option>
@@ -72,11 +76,9 @@
 </form>
 <br>
 Entry to edit:<br>
-{{#player}}
 {{name}} - {{age}} years old<br>
 Team: {{team}}<br>
 Position: {{position}}<br>
 {{/player}}
-
 </body>
 </html>
