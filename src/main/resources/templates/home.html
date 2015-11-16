@@ -16,7 +16,7 @@
 </form>
 <br><br>
 {{#players}}
-{{name}} - {{age}} years old<br>
+<b>#{{number}}</b> {{name}} - {{age}} years old<br>
 Team: {{team}}<br>
 Position: {{position}}<br>
 Entry by {{user.username}}<br><br>
@@ -95,10 +95,16 @@ Create a new entry:
         <option value="K">K</option>
         <option value="P">P</option>
     </select>
+    <form action="add-image" method="post">
+        <input type="url" placeholder="Insert an image URL" name="image">
+    </form>
     <button type="submit">Create</button>
-</form><br><br>
+</form>
+
+
+<br><br>
 {{#players}}
-{{name}} - {{age}} years old<br>
+<b>#{{number}}</b> {{name}} - {{age}} years old<br>
 Team: {{team}}<br>
 Position: {{position}}<br>
 Entry by {{user.username}}<br>
@@ -110,9 +116,6 @@ Entry by {{user.username}}<br>
 <br><br>
 {{/players}}
 {{/username}}
-
-
-
 
 </body>
 </html>
