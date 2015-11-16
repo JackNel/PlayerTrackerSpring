@@ -33,6 +33,7 @@ Welcome, {{username}}!
 Create a new entry:
 <form action="create" method="post">
     <input type="text" placeholder="Player Name" name="name" size="40"/>
+    <input type="number" placeholder="Enter Jersey #" name="number"/>
     <input type="number" placeholder="Age" name="age"/>
     <select name="team">
         <option selected disabled>Select Team</option>
@@ -95,9 +96,6 @@ Create a new entry:
         <option value="K">K</option>
         <option value="P">P</option>
     </select>
-    <form action="add-image" method="post">
-        <input type="url" placeholder="Insert an image URL" name="image">
-    </form>
     <button type="submit">Create</button>
 </form>
 
@@ -116,6 +114,8 @@ Entry by {{user.username}}<br>
 <br><br>
 {{/players}}
 {{/username}}
-
+{{#showNext}}
+<a href="/?page={{nextPage}}">Next</a>
+{{/showNext}}
 </body>
 </html>

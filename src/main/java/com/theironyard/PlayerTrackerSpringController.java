@@ -1,9 +1,12 @@
 package com.theironyard;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import sun.awt.image.URLImageSource;
 
 import javax.annotation.PostConstruct;
@@ -56,10 +59,16 @@ public class PlayerTrackerSpringController {
     }
 
     @RequestMapping("/")
-    public String home(Model model, HttpSession session) {
+    public String home(Model model, HttpSession session, @RequestParam(defaultValue = "0") int page) {
+        PageRequest pr = new PageRequest(page, 10);
+        Page p;
+        p = players.findAll(pr);
+
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username);
-        model.addAttribute("players", players.findAll());
+        model.addAttribute("players", p);
+        model.addAttribute("nextPage", page+1);
+        model.addAttribute("showNext", p.hasNext());
         return "home";
     }
 
@@ -89,7 +98,7 @@ public class PlayerTrackerSpringController {
     }
 
     @RequestMapping("/create")
-    public String create(HttpSession session, String name, String team, String position, Integer age, URLImageSource image) throws Exception {
+    public String create(HttpSession session, String name, Integer number, String team, String position, Integer age) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in");
@@ -97,6 +106,7 @@ public class PlayerTrackerSpringController {
         User user = users.findOneByUsername(username);
         Player player = new Player();
         player.name = name;
+        player.number = number;
         player.team = team;
         player.position = position;
         player.age = age;

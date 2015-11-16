@@ -17,8 +17,8 @@ public class Player {
     @GeneratedValue
     Integer id;
 
-    Integer number;
     String name;
+    Integer number;
     String team;
     String position;
     Integer age;

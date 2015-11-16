@@ -11,6 +11,7 @@
 <form action="edit-player" method="post">
     <input type="hidden" value="{{id}}" name="id"/>
     <input type="text" value="{{name}}" name="name" size="40"/>
+    <input type="number" value="{{number}}" name="number"/>
     <input type="number" value="{{age}}" name="age"/>
     <select name="team">
         <option selected disabled>Select Team</option>
@@ -77,7 +78,7 @@
 </form>
 <br>
 Entry to edit:<br>
-{{name}} - {{age}} years old<br>
+<b>#{{number}}</b> {{name}} - {{age}} years old<br>
 Team: {{team}}<br>
 Position: {{position}}<br>
 {{/player}}
