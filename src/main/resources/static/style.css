@@ -1,0 +1,13 @@
+body {
+    background-image: url("playerTrackerBackground.jpeg");
+    color: ivory;
+
+}
+
+a:link {
+    color: LightBlue;
+}
+
+a:visited {
+    color: Orchid;
+}
