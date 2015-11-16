@@ -94,4 +94,14 @@ public class PlayerTrackerSpringController {
         players.save(player);
         return "redirect:/";
     }
+
+    @RequestMapping("/delete")
+    public String delete(HttpSession session, Integer id) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in");
+        }
+        players.delete(id);
+        return "redirect:/";
+    }
 }
