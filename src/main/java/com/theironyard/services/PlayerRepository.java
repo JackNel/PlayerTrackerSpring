@@ -1,5 +1,6 @@
-package com.theironyard;
+package com.theironyard.services;
 
+import com.theironyard.entities.Player;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**

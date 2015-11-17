@@ -1,5 +1,10 @@
-package com.theironyard;
+package com.theironyard.controllers;
 
+import com.theironyard.entities.Player;
+import com.theironyard.entities.User;
+import com.theironyard.services.PlayerRepository;
+import com.theironyard.services.UserRepository;
+import com.theironyard.util.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -7,11 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import sun.awt.image.URLImageSource;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileReader;
 import java.security.NoSuchAlgorithmException;
@@ -69,6 +72,8 @@ public class PlayerTrackerSpringController {
         model.addAttribute("players", p);
         model.addAttribute("nextPage", page+1);
         model.addAttribute("showNext", p.hasNext());
+        model.addAttribute("prevPage", page-1);
+        model.addAttribute("showPrev", p.hasPrevious());
         return "home";
     }
 
@@ -98,7 +103,7 @@ public class PlayerTrackerSpringController {
     }
 
     @RequestMapping("/create")
-    public String create(HttpSession session, String name, Integer number, String team, String position, Integer age) throws Exception {
+    public String create(HttpSession session, String name, int number, String team, String position, int age) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in");
@@ -111,13 +116,12 @@ public class PlayerTrackerSpringController {
         player.position = position;
         player.age = age;
         player.user = user;
-       // player.image = image;
         players.save(player);
         return "redirect:/";
     }
 
     @RequestMapping("/edit")
-    public String edit(HttpSession session, Model model, Integer id) throws Exception {
+    public String edit(HttpSession session, Model model, int id) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in");
@@ -128,13 +132,14 @@ public class PlayerTrackerSpringController {
     }
 
     @RequestMapping("/edit-player")
-    public String editPlayer(HttpSession session, Integer id, String name, String team, String position, Integer age) throws Exception {
+    public String editPlayer(HttpSession session, int id, String name, int number, String team, String position, int age) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in");
         }
         Player player = players.findOne(id);
         player.name = name;
+        player.number = number;
         player.team = team;
         player.position = position;
         player.age = age;
@@ -143,7 +148,7 @@ public class PlayerTrackerSpringController {
     }
 
     @RequestMapping("/delete")
-    public String delete(HttpSession session, Integer id) throws Exception {
+    public String delete(HttpSession session, int id) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in");
