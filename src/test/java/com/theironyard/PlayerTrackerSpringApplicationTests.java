@@ -63,9 +63,25 @@ public class PlayerTrackerSpringApplicationTests {
 	@Test
 	public void testEditPlayer() throws Exception {
 		mockMvc.perform(
+				MockMvcRequestBuilders.post("/login")
+						.param("username", "testUser")
+						.param("password", "testPass")
+		);
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.post("/create")
+						.param("name", "testName")
+						.param("number", "1")
+						.param("team", "testTeam")
+						.param("position", "testPosition")
+						.param("age", "1")
+						.sessionAttr("username", "testUser")
+		);
+		int x = players.findAll().iterator().next().id;
+		mockMvc.perform(
 				MockMvcRequestBuilders.post("/edit-player")
 					.sessionAttr("username", "testUser")
-					.param("id", "1")
+					.param("id", x + "")
 					.param("name", "testName")
 					.param("number", "2")
 					.param("team", "testTeam")
@@ -78,12 +94,25 @@ public class PlayerTrackerSpringApplicationTests {
 	@Test
 	public void testDelete() throws Exception {
 		mockMvc.perform(
+				MockMvcRequestBuilders.post("/login")
+						.param("username", "testUser")
+						.param("password", "testPass")
+		);
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.post("/create")
+						.param("name", "testName")
+						.param("number", "1")
+						.param("team", "testTeam")
+						.param("position", "testPosition")
+						.param("age", "1")
+						.sessionAttr("username", "testUser")
+		);
+		mockMvc.perform(
 				MockMvcRequestBuilders.post("/delete")
 					.sessionAttr("username", "testUser")
-					.param("id", "1")
+					.param("id", players.findAll().iterator().next().id+"")
 		);
 		assertTrue(players.count() == 0);
 	}
-
-
 }
