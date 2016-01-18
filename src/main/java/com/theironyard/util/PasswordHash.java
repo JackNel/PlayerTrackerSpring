@@ -191,7 +191,7 @@ public class PasswordHash
      * Tests the basic functionality of the PasswordHash class
      *
      * @param   args        ignored
-     */
+
     public static void main(String[] args)
     {
         try
@@ -231,6 +231,6 @@ public class PasswordHash
         {
             System.out.println("ERROR: " + ex);
         }
-    }
+    }*/
 
 }
