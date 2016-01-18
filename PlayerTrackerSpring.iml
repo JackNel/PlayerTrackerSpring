@@ -738,7 +738,5 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="org.eclipse.jetty:jetty-server:9.0.0.RC2" level="project" />
-    <orderEntry type="library" name="org.eclipse.jetty:jetty-servlet:9.0.0.RC2" level="project" />
   </component>
 </module>
