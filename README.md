@@ -1,6 +1,6 @@
 # PlayerTrackerSpring
 
-Basic CRUD app to store a list of your favorite NFL players.  The purpose of this application was to get some practice
+Basic CRUD app to store a list of your favorite NFL players.  The purpose of this application is to practice
 with Spring MVC and SQL queries.
 
 ####Functionality:
