@@ -62,18 +62,40 @@ public class PlayerTrackerSpringController {
     }
 
     @RequestMapping("/")
-    public String home(Model model, HttpSession session, @RequestParam(defaultValue = "0") int page) {
+    public String home(Model model,
+                       HttpSession session,
+                       @RequestParam(defaultValue = "0") int page,
+                       String showMine,
+                       String searchByName,
+                       String searchByTeam,
+                       String searchByPosition) {
+
         PageRequest pr = new PageRequest(page, 10);
         Page p;
         p = players.findAll(pr);
 
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username);
-        model.addAttribute("players", p);
         model.addAttribute("nextPage", page+1);
         model.addAttribute("showNext", p.hasNext());
         model.addAttribute("prevPage", page-1);
         model.addAttribute("showPrev", p.hasPrevious());
+
+        if (showMine != null) {
+            model.addAttribute("players", users.findOneByUsername(username).players);
+        }
+        else if (searchByName != null) {
+            model.addAttribute("players", players.searchByName(searchByName));
+        }
+        else if (searchByTeam != null) {
+            model.addAttribute("players", players.findAllByTeam(searchByTeam));
+        }
+        else if (searchByPosition != null) {
+            model.addAttribute("players", players.findAllByPosition(searchByPosition));
+        }
+        else {
+            model.addAttribute("players", p);
+        }
         return "home";
     }
 
@@ -116,6 +138,7 @@ public class PlayerTrackerSpringController {
         player.position = position;
         player.age = age;
         player.user = user;
+        user.players.add(player);
         players.save(player);
         return "redirect:/";
     }
