@@ -3,11 +3,11 @@
 Basic CRUD app to store a list of your favorite NFL players.  The purpose of this application was to get some practice
 with Spring MVC and SQL queries.
 
-Functionality:
+###Functionality:
 Create, edit, delete, and view a list of NFL players.
 Search via name (or partial name), team, or position.
 
-Possible future functionality:
+###Possible future functionality:
 I would like to make this more of a player statistics site.
 
 It would be great to integrate an NFL stats API, main issue is most of the live stats APIs cost aprrox. $600 and up/month.
