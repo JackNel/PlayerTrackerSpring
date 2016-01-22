@@ -16,3 +16,5 @@ A more realistic option would be to find a free CSV that I could update every fe
 Add more to CSS and implement some javascript.
 
 Convert from mustache template to actual HTML.
+
+Add more ways to search.
