@@ -12,3 +12,7 @@ I would like to make this more of a player statistics site.
 
 It would be great to integrate an NFL stats API, main issue is most of the live stats APIs cost aprrox. $600 and up/month.
 A more realistic option would be to find a free CSV that I could update every few months.
+
+Add more to CSS and implement some javascript.
+
+Convert from mustache template to actual HTML.
